@@ -10,7 +10,7 @@ El proyecto está organizado en paquetes:
 src/ ├── app/ │ └── Main.java ├── modelo/ │ ├── Usuario.java │ ├── Cliente.java │ ├── Producto.java │ ├── Venta.java │ ├── DetalleVenta.java │ └── Reporte.java └── servicio/ ├── GestorUsuarios.java ├── GestorClientes.java ├── GestorProductos.java ├── GestorVentas.java └── GestorReportes.java └── ConexionBD.java
 
 ## 💾 Base de datos MySQL
-El sistema se conecta a una base de datos remota mediante JDBC (Java Database Connectivity). La base fue creada en phpMyAdmin (freesqldatabase.com) e incluye las tablas principales: Usuario, Cliente, Producto, Venta, Detalle_Venta, Reporte.
+El sistema se conecta a una base de datos remota mediante JDBC (Java Database Connectivity). La base fue creada en phpMyAdmin e incluye las tablas principales: Usuario, Cliente, Producto, Venta, Detalle_Venta, Reporte.
 
 ## ⚙️ Funcionalidades principales
 Gestión de usuarios: alta, modificación y eliminación.
