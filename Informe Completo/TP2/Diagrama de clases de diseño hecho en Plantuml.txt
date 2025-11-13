@@ -1,0 +1,60 @@
+Importante: Diagrama de clases de diseño hecho en Plantuml
+
+@startuml
+class Usuario {
+  - idUsuario: int
+  - nombre: String
+  - clave: String
+  - rol: String
+  + login(): boolean
+  + gestionarUsuarios()
+}
+
+class Cliente {
+  - idCliente: int
+  - nombre: String
+  - apellido: String
+  - email: String
+  - telefono: String
+  + registrarCliente()
+}
+
+class Producto {
+  - idProducto: int
+  - nombre: String
+  - categoria: String
+  - precio: double
+  - stock: int
+  + registrarProducto()
+  + actualizarProducto()
+}
+
+class Venta {
+  - idVenta: int
+  - fecha: Date
+  - total: double
+  + registrarVenta()
+  + calcularTotal()
+}
+
+class DetalleVenta {
+  - idDetalle: int
+  - cantidad: int
+  - precioUnitario: double
+  - subtotal: double
+}
+
+class Reporte {
+  - idReporte: int
+  - fechaGeneracion: Date
+  + generarReporteVentas()
+  + exportarCSV()
+  + exportarPDF()
+}
+
+Usuario "1" --> "*" Venta : registra
+Cliente "1" --> "*" Venta : realiza
+Venta "1" --> "*" DetalleVenta
+Producto "1" --> "*" DetalleVenta
+Reporte --> Venta
+@enduml

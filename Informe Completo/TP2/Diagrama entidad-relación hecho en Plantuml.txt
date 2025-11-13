@@ -1,0 +1,58 @@
+Importante: Diagrama entidad-relación hecho en Plantuml
+
+@startuml
+entity "Usuario" as Usuario {
+  *idUsuario : INT <<PK>>
+  nombre : VARCHAR
+  apellido : VARCHAR
+  usuario : VARCHAR
+  contraseña : VARCHAR
+  rol : ENUM
+}
+
+entity "Cliente" as Cliente {
+  *idCliente : INT <<PK>>
+  nombre : VARCHAR
+  apellido : VARCHAR
+  email : VARCHAR
+  telefono : VARCHAR
+}
+
+entity "Producto" as Producto {
+  *idProducto : INT <<PK>>
+  nombre : VARCHAR
+  categoria : VARCHAR
+  precio : DECIMAL
+  stock : INT
+}
+
+entity "Venta" as Venta {
+  *idVenta : INT <<PK>>
+  fecha : DATE
+  total : DECIMAL
+  idUsuario : INT <<FK>>
+  idCliente : INT <<FK>>
+}
+
+entity "Detalle_Venta" as Detalle_Venta {
+  *idDetalle : INT <<PK>>
+  cantidad : INT
+  precioUnitario : DECIMAL
+  subtotal : DECIMAL
+  idVenta : INT <<FK>>
+  idProducto : INT <<FK>>
+}
+
+entity "Reporte" as Reporte {
+  *idReporte : INT <<PK>>
+  fechaGeneracion : DATE
+  tipoReporte : VARCHAR
+  idVenta : INT <<FK>>
+}
+
+Usuario ||--o{ Venta : "registra"
+Cliente ||--o{ Venta : "realiza"
+Venta ||--o{ Detalle_Venta : "incluye"
+Producto ||--o{ Detalle_Venta : "contiene"
+Venta ||--o{ Reporte : "genera"
+@enduml

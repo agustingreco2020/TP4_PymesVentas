@@ -1,0 +1,18 @@
+Importante: Diagrama de despliegue hecho en Plantuml
+
+@startuml
+node "Cliente (Usuario)" {
+  artifact "Aplicación Java (Swing/JavaFX)" as App
+}
+
+node "Servidor de Aplicaciones" {
+  artifact "Lógica de Negocio (Java)" as Logica
+}
+
+node "Servidor de Base de Datos" {
+  database "MySQL - pyme_ventas" as DB
+}
+
+App --> Logica : Peticiones de gestión\n(Registrar, Consultar, Reportes)
+Logica --> DB : Consultas JDBC\n(INSERT, SELECT, UPDATE, DELETE)
+@enduml

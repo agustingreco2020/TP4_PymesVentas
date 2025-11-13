@@ -1,0 +1,78 @@
+Importante: Diagramas de secuencia hechos en Plantuml
+
+CU-001 - Registrar Producto: 
+@startuml
+actor Administrador
+Administrador -> Sistema : Ingresar datos de producto
+Sistema -> BD : Guardar producto
+BD --> Sistema : Confirmación
+Sistema --> Administrador : Producto registrado
+@enduml
+
+CU-002 - Modificar o eliminar producto:
+@startuml
+actor Administrador
+Administrador -> Sistema : Seleccionar producto
+Sistema -> BD : Consultar producto
+BD --> Sistema : Datos del producto
+Administrador -> Sistema : Modificar/Eliminar
+Sistema -> BD : Actualizar/Borrar registro
+BD --> Sistema : Confirmación
+Sistema --> Administrador : Operación exitosa
+@enduml
+
+CU-003 - Consultar productos:
+@startuml
+actor Administrador
+actor Vendedor
+Administrador -> Sistema : Solicitar listado de productos
+Vendedor -> Sistema : Solicitar listado de productos
+Sistema -> BD : Consultar tabla Productos
+BD --> Sistema : Lista de productos
+Sistema --> Administrador : Mostrar lista
+Sistema --> Vendedor : Mostrar lista
+@enduml
+
+CU-004 - Registrar cliente:
+@startuml
+actor Vendedor
+Vendedor -> Sistema : Ingresar datos del cliente
+Sistema -> BD : Guardar cliente
+BD --> Sistema : Confirmación
+Sistema --> Vendedor : Cliente registrado
+@enduml
+
+CU-005 - Registrar venta:
+@startuml
+actor Vendedor
+Vendedor -> Sistema : Seleccionar cliente
+Sistema -> BD : Consultar cliente
+BD --> Sistema : Datos cliente
+Vendedor -> Sistema : Ingresar productos y cantidades
+Sistema -> BD : Verificar stock
+BD --> Sistema : Confirmación
+Sistema -> BD : Guardar venta + detalle
+BD --> Sistema : Confirmación
+Sistema --> Vendedor : Venta registrada
+@enduml
+
+CU-006 - Generar reporte de ventas:
+@startuml
+actor Administrador
+actor Vendedor
+Administrador -> Sistema : Seleccionar rango de fechas
+Vendedor -> Sistema : Seleccionar rango de fechas
+Sistema -> BD : Consultar ventas en rango
+BD --> Sistema : Datos de ventas
+Sistema --> Administrador : Mostrar reporte
+Sistema --> Vendedor : Mostrar reporte
+@enduml
+
+CU-007 - Gestionar usuarios:
+@startuml
+actor Administrador
+Administrador -> Sistema : Registrar/Modificar/Eliminar usuario
+Sistema -> BD : Actualizar tabla Usuarios
+BD --> Sistema : Confirmación
+Sistema --> Administrador : Usuario gestionado
+@enduml
